@@ -1,11 +1,10 @@
 # simple-ascii-menu-ut
 
-<strong>TL/DR</strong> MGenerating unit tests with chatGPT for existing code
+<strong>TL/DR</strong> Generating unit tests with chatGPT for existing code
 
+In the [previous article](https://github.com/nchronas/simple-ascii-menu), one of ChatGPT suggestions for improving the project was adding unit testing. So I will try to do that.
 
-In the [previous article](), one of ChatGPT suggestions for improving the project was adding unit testing. So I will try to do that.
-
-While I have experience in C, using [ceedling]() and [CMocka](), the other languages are unkown for me, so let's see what ChatGPT will suggest.
+While I have experience in C, using [ceedling](https://www.throwtheswitch.org/ceedling) and [CMocka](https://cmocka.org/), the other languages are unkown for me, so let's see what ChatGPT will suggest.
 
 # During development
 
@@ -276,8 +275,37 @@ Command led parsed with 1 arguments
 [  PASSED  ] 5 tests.
 ```
 
+### Rust
+
+You can find the chatGPT chat link for the rust code [here](https://chat.openai.com/share/e9181595-9485-49a4-bb9c-5a62649e5693)
+
+chatGPT started by suggesting to refactor the code and then adding the tests.
+
+Generating unit tests for rust was a bit more complicated than the rest. The reason was that the way that chatGPT suggested to capture the stdout was not valid. After a couple of tries and searches in stack overflow I decided to ask chatGPT to refactor the code in a way that there was no need to check the stdout but now the functions returned a string. That was straightforward and easy.
+
+I have to say, I like how rust looks and handles test. It's a very modern approach and well intuitive.
+
+``` terminal
+   Compiling rust v0.1.0 (/home/parallels/Documents/repos/simple-ascii-menu-ut/rust)
+    Finished test [unoptimized + debuginfo] target(s) in 0.91s
+     Running unittests src/main.rs (target/debug/deps/rust-01ec86f039f9cbb0)
+
+running 5 tests
+test tests::test_print_help_menu ... ok
+test tests::test_execute_command ... ok
+test tests::test_print_button_command ... ok
+test tests::test_print_led_command ... ok
+test tests::test_process_buffer ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
 # takeaways
 
-I was Suprised to see that it suggested refactoring even if I didn't asked it. In my experience this is the way to go and one of the big problem areas when you are trying to introduce unit testing in legacy code. Usually the functionality is not cleanly structured into modules/functions and you end up with coupled functionality in a function, making testing a living hell. It was interesting that it didn't propose it for the python unit testing but only for the C part.
+I was Suprised to see that it suggested refactoring even if I didn't asked it. In my experience this is the way to go and one of the big problem areas when you are trying to introduce unit testing in legacy code. Usually the functionality is not cleanly structured into modules/functions and you end up with coupled functionality in a function, making testing a living hell. It was interesting that it didn't propose it for the python or C++ unit testing but only for the C part and rust.
 
-Generating, running and debugging the unit test was a breeze and definetely faster that I would have done it on my own. Definetely a positive experience and while generating code might be more complicated, creating unit tests through LLMs is definetely the way to go.
+Generating, running and debugging the unit test was a breeze and definetely faster that I would have done it on my own. Definetely a positive experience and while generating code might be more complicated, creating unit tests through LLMs is definetely the way to go. 
+
+Generating unit tests for Python, C++ was a bit faster than C. Rust was a bit more complicated and it needed to refactor the code in order to work. I attribute that to the fact that the language is relatively new.
+
+Another interesting point was that chatGPT suggested to refactor the code in the beginning for Rust and C but not for python and C++. I didn't find any specific reason for that though. I tried the same prompt that I used for C, this time for python, and again it didn't suggest a refactor.
