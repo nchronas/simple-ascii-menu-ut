@@ -7,13 +7,12 @@ In the [previous article](), one of ChatGPT suggestions for improving the projec
 
 While I have experience in C, using [ceedling]() and [CMocka](), the other languages are unkown for me, so let's see what ChatGPT will suggest.
 
-You can find the chatGPT chat link for the C code [here](https://chat.openai.com/share/08c308e7-a5ce-4313-a0e1-9883679e39c5)
-
-You can find the chatGPT chat link for the Python code [here](https://chat.openai.com/share/0dd2d87d-97cd-4b9e-a389-21482f28b5ef)
-
 # During development
 
 ## C language
+
+You can find the chatGPT chat link for the C code [here](https://chat.openai.com/share/08c308e7-a5ce-4313-a0e1-9883679e39c5)
+
 
 ### Refactoring
 
@@ -220,6 +219,8 @@ Results
 
 ## Python
 
+You can find the chatGPT chat link for the Python code [here](https://chat.openai.com/share/0dd2d87d-97cd-4b9e-a389-21482f28b5ef)
+
 Generating unit tests for python was a breeze. It only required 5 questions, including solving some issues.
 
 The scenarios were pretty good and had good coverage, equivelant to the C part.
@@ -239,6 +240,40 @@ OK
 Ran 4 tests in 0.0005726814270019531 seconds.
 Errors: 0, Failures: 0
 All tests passed!
+```
+
+### C++
+
+You can find the chatGPT chat link for the C++ code [here](https://chat.openai.com/share/0f729020-f605-499e-b82b-ba48ffbb8b55)
+
+Generating unit tests for C++ was again very straightforward. It had all the scenartios needed to check the test. Even though it didn't suggest a refactor it was able to test all the functionality in the application.
+
+The only thing that took time was installing google test. That was mostly of bad instructions regarding installing google mock which wasn't necessary. It also generated the cmake list but on the second try (due to the google test installation was in the root system).
+
+``` terminal
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from CommandProcessorTest
+[ RUN      ] CommandProcessorTest.ProcessBufferTest
+Command led parsed with 1 arguments
+[       OK ] CommandProcessorTest.ProcessBufferTest (0 ms)
+[ RUN      ] CommandProcessorTest.PrintHelpMenuTest
+[       OK ] CommandProcessorTest.PrintHelpMenuTest (0 ms)
+[ RUN      ] CommandProcessorTest.PrintLedCommandTest
+Command led parsed with 1 arguments
+Command led parsed with 1 arguments
+Command led parsed with 2 arguments
+[       OK ] CommandProcessorTest.PrintLedCommandTest (0 ms)
+[ RUN      ] CommandProcessorTest.PrintButtonCommandTest
+[       OK ] CommandProcessorTest.PrintButtonCommandTest (0 ms)
+[ RUN      ] CommandProcessorTest.ProcessInvalidLedCommandTest
+Command led parsed with 1 arguments
+[       OK ] CommandProcessorTest.ProcessInvalidLedCommandTest (0 ms)
+[----------] 5 tests from CommandProcessorTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 5 tests.
 ```
 
 # takeaways
