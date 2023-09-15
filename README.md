@@ -7,9 +7,13 @@ In the [previous article](), one of ChatGPT suggestions for improving the projec
 
 While I have experience in C, using [ceedling]() and [CMocka](), the other languages are unkown for me, so let's see what ChatGPT will suggest.
 
-You can find the chatGPT chat link [here](https://chat.openai.com/share/0c4c1370-757c-4cdd-8247-c828355d2f08)
+You can find the chatGPT chat link for the C code [here](https://chat.openai.com/share/08c308e7-a5ce-4313-a0e1-9883679e39c5)
+
+You can find the chatGPT chat link for the Python code [here](https://chat.openai.com/share/0dd2d87d-97cd-4b9e-a389-21482f28b5ef)
 
 # During development
+
+## C language
 
 ### Refactoring
 
@@ -214,8 +218,31 @@ Summary of generated test scenarios
 ```
 Results
 
+## Python
+
+Generating unit tests for python was a breeze. It only required 5 questions, including solving some issues.
+
+The scenarios were pretty good and had good coverage, equivelant to the C part.
+
+The interesting part was that it didn't suggest a refactoring, which it did for the C language. And that left importand functionality untested.
+
+``` terminal
+...Command help parsed with 0 arguments
+Command led parsed with 1 arguments
+Command button parsed with 0 arguments
+Command invalid_command parsed with 0 arguments
+.
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+Ran 4 tests in 0.0005726814270019531 seconds.
+Errors: 0, Failures: 0
+All tests passed!
+```
+
 # takeaways
 
-I was Suprised to see that it suggested refactoring even if I didn't asked it. In my experience this is the way to go and one of the big problem areas when you are trying to introduce unit testing in legacy code. Usually the functionality is not cleanly structured into modules/functions and you end up with coupled functionality in a function, making testing a living hell.
+I was Suprised to see that it suggested refactoring even if I didn't asked it. In my experience this is the way to go and one of the big problem areas when you are trying to introduce unit testing in legacy code. Usually the functionality is not cleanly structured into modules/functions and you end up with coupled functionality in a function, making testing a living hell. It was interesting that it didn't propose it for the python unit testing but only for the C part.
 
 Generating, running and debugging the unit test was a breeze and definetely faster that I would have done it on my own. Definetely a positive experience and while generating code might be more complicated, creating unit tests through LLMs is definetely the way to go.
